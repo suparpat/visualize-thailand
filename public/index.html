@@ -8,7 +8,67 @@
 		  crossorigin=""></script>
 	</head>
 	<body>
-		<h1>Visualize Thailand</h1>
+		<h1>Thailand's Coastal Water Quality</h1>
+		<ul>
+			<li>
+				Dissolved Oxygen:
+			</li>
+			<li>
+				< 3 = red
+			</li>
+			<li>
+				3 - 7 = yellow
+			</li>
+			<li>
+				7 - 20 = green
+			</li>
+			<li>
+				Otherwise = white
+			</li>
+			<li>
+				<a href="http://reo06.mnre.go.th/newweb/index.php/2011-07-27-08-44-12/2011-08-04-07-38-41/2011-08-04-08-02-46/730-2013-04-11-03-45-18">http://reo06.mnre.go.th/newweb/index.php/2011-07-27-08-44-12/2011-08-04-07-38-41/2011-08-04-08-02-46/730-2013-04-11-03-45-18
+			</a></li>
+		</ul>
+<!-- 		<ul>
+			<li>
+				Total Coliform bacteria:
+			</li>
+			<li>
+				< 10 = drinkable water (เหมาะกับการดื่ม)
+			</li>
+			<li>
+				< 5,000 = drinkable water (เหมาะกับการประปา อุปโภค)
+			</li>
+			<li>
+				< 20,000 = suitable for agriculture (การเกษตร)
+			</li>
+			<li>
+				<a href="http://reo06.mnre.go.th/newweb/index.php/2011-07-27-08-44-12/2011-08-04-07-38-41/2011-08-04-08-02-46/730-2013-04-11-03-45-18">http://reo06.mnre.go.th/newweb/index.php/2011-07-27-08-44-12/2011-08-04-07-38-41/2011-08-04-08-02-46/730-2013-04-11-03-45-18
+			</a></li>
+		</ul> -->
+		<form>
+			<label>Choose year:</label>
+			<select id="yearSelect">
+				<option value="1998">1998</option>
+				<option value="1999">1999</option>
+				<option value="2000">2000</option>
+				<option value="2001">2001</option>
+				<option value="2002">2002</option>
+				<option value="2003">2003</option>
+				<option value="2004">2004</option>
+				<option value="2005">2005</option>
+				<option value="2006">2006</option>
+				<option value="2007">2007</option>
+				<option value="2008">2008</option>
+				<option value="2009">2009</option>
+				<option value="2010">2010</option>
+				<option value="2011">2011</option>
+				<option value="2012">2012</option>
+				<option value="2013">2013</option>
+				<option value="2014">2014</option>
+				<option value="2015" selected>2015</option>
+			</select>
+		</form>
 		 <div id="mapid" style="height:700px"></div>
 
 		<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
