@@ -1,0 +1,23 @@
+{
+  "name": "visualize-thailand",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suparpat/visualize-thailand.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suparpat/visualize-thailand/issues"
+  },
+  "homepage": "https://github.com/suparpat/visualize-thailand#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
