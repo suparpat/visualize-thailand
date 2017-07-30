@@ -1,6 +1,8 @@
 var dataByYear = {};
-var mymap = L.map('mapid').setView([13.5000, 100.9925], 5);
 
+var circleLayerGroup;
+var animationPlaying = false;
+var mymap = L.map('mapid').setView([13.5000, 100.9925], 5);
 
 L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
@@ -32,11 +34,35 @@ $(document).ready(function() {
         }
      });
 
-    $('#yearSelect').change(function(event) {
-    	// console.log(L)
-    	// L.layerGroups().clearLayers()
+    $('#yearSelect').on('change', function(event) {
+		mymap.removeLayer(circleLayerGroup)
     	updateMap(dataByYear[parseInt($('#yearSelect').val()) + 543])
 	});
+
+    var interval;
+	$('#playButton').on('click', function(event){
+		if(!animationPlaying){
+			animationPlaying = true
+			$('#playButton').text("stop")
+			var years = document.getElementById('yearSelect').options.length
+			var count = 0;
+			interval = setInterval(function(){
+				$("#yearSelect").val($("#yearSelect option:eq(" + count + ")").val()).trigger('change')
+				count++;
+				if(count == years){
+					clearInterval(interval)
+					$('#playButton').text("play")
+					animationPlaying = false;
+				}
+			}, 1000)
+
+		}else{
+			clearInterval(interval)
+			$('#playButton').text("play")
+			animationPlaying = false
+		}
+
+	})
 });
 
 function updateMap(yearData){
@@ -45,26 +71,34 @@ function updateMap(yearData){
 	temp = yearData.filter((r) => {
 		return r[1] == "ปริมาณออกซิเจนละลายน้ำมก./ล."
 	})
-
+	var circles = []
 	temp.forEach((r) => {
 		var value = r[8]
 		var lat = r[4]
 		var long = r[5]
 		var color = calcColor(value);
-		L.circle([lat, long], {
+
+		var circle = L.circle([lat, long], {
 		    color: color,
 		    fillColor: color,
 		    fillOpacity: 0.5,
 		    radius: 20000
-		}).addTo(mymap).bindPopup("I am a circle.");
+		})
+		.bindPopup(
+		"<strong>" + r[0] + "</strong><br>"+
+		"average: " + value + "<br>"+
+		"min: " + r[6] + "<br>"+
+		"max: " + r[7]);
 
+		circles.push(circle)
 
 	})
 
+	circleLayerGroup = L.layerGroup(circles)
+	mymap.addLayer(circleLayerGroup)
 }
 
 function calcColor(val){
-	console.log(val)
 	// val = parseInt(val.split("-")[0])
 	if(0 <= val && val <= 3){
 		return 'red'
