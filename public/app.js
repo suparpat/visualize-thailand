@@ -4,7 +4,7 @@ var circleLayerGroup;
 var animationPlaying = false;
 var mymap = L.map('mapid').setView([13.5000, 100.9925], 5);
 
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(mymap);
